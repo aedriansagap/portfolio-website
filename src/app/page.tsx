@@ -1,66 +1,51 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import "./page.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
+    <div className="home-container">
+      <section className="hero">
+        <div className="hero-content">
+          <h1 className="hero-title animate-fade-in">
+            Building Digital <br />
+            <span className="text-gradient">Experiences.</span>
+          </h1>
+          <p className="hero-subtitle animate-fade-in delay-100">
+            I'm a full-stack developer specializing in building exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products.
+          </p>
+          <div className="hero-cta animate-fade-in delay-200">
+            <button className="btn btn-primary">View My Work</button>
+            <button className="btn btn-outline">Contact Me</button>
+          </div>
+        </div>
+        <div className="hero-graphic animate-fade-in delay-300">
+          <div className="abstract-shape shape-1"></div>
+          <div className="abstract-shape shape-2"></div>
+        </div>
+      </section>
+
+      <section id="about" className="section glass-panel">
+        <div className="section-content">
+          <h2>About Me</h2>
           <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+            This section is a placeholder. Here you can write about your background, experience, and the unique perspective you bring to the table.
           </p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section id="projects" className="section">
+        <h2>Selected Projects</h2>
+        <div className="projects-grid">
+          {[1, 2, 3].map((item) => (
+            <div key={item} className="project-card glass-panel">
+              <div className="project-image-placeholder"></div>
+              <div className="project-info">
+                <h3>Project Title {item}</h3>
+                <p>A brief description of what this project is and what technologies were used to build it.</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </main>
+      </section>
     </div>
   );
 }
