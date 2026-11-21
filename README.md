@@ -26,3 +26,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 npm run lint
 npm run build
 ```
+
+## Deploy to Firebase Hosting
+
+This project is configured for Next.js static export (`output: "export"` in `next.config.ts`) and includes a ready-to-use `firebase.json` serving the generated `out/` directory (compatible with Firebase's free Spark plan):
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase use --add   # select your Firebase project
+npm run build
+firebase deploy --only hosting
+```
