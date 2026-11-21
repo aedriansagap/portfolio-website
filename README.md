@@ -26,3 +26,29 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 npm run lint
 npm run build
 ```
+
+## Deploy to Firebase Hosting
+
+This project is configured for Next.js static export (`output: "export"` in `next.config.ts`) and includes a ready-to-use `firebase.json` serving the generated `out/` directory (compatible with Firebase's free Spark plan).
+
+### Manual Deploy
+
+```bash
+npm install -g firebase-tools
+firebase login
+firebase use --add   # select your Firebase project
+npm run build
+firebase deploy --only hosting
+```
+
+### Automatic Deploys via GitHub Actions
+
+Two workflows are preconfigured in `.github/workflows/`:
+
+- **`firebase-hosting-merge.yml`** — Lints, builds `out/`, and deploys to the `live` Firebase Hosting channel on every push to `main` (and via manual `workflow_dispatch`).
+- **`firebase-hosting-pull-request.yml`** — Runs lint + build checks on every PR and publishes a temporary 7-day Firebase preview URL once credentials are configured.
+
+To activate automatic deploys, add two entries in **GitHub Repository → Settings → Secrets and variables → Actions**:
+
+1. **`FIREBASE_SERVICE_ACCOUNT`** *(Repository Secret)* — JSON key for a Firebase service account with the **Firebase Hosting Admin** role (generate in Firebase Console → Project Settings → Service Accounts, or via Google Cloud IAM).
+2. **`FIREBASE_PROJECT_ID`** *(Repository Variable or Secret)* — Your Firebase project ID (e.g., `my-portfolio-12345`).
