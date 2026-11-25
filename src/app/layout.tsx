@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { PROFILE } from "@/data/portfolio";
+import { ALLOW_INDEXING, SITE_SEO, SITE_URL } from "@/lib/site";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -23,27 +24,81 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: `${PROFILE.name} — ${PROFILE.role}`,
-  description:
-    "Personal portfolio of Aedrian Rimorin Sagap — BS Computer Science (Magna Cum Laude), PhilNITS IT Passport Certified Software Engineer building full-stack systems, applied AI/RAG tools, and mobile applications.",
-  keywords: [
-    "Aedrian Sagap",
-    "Software Engineer",
-    "Full-Stack Developer",
-    "Applied AI",
-    "Next.js",
-    "React Native",
-    "FastAPI",
-    "Portfolio",
+const googleVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#111210" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f3ec" },
   ],
-  authors: [{ name: PROFILE.fullName, url: PROFILE.github }],
-  openGraph: {
-    title: `${PROFILE.name} — ${PROFILE.role}`,
-    description:
-      "Full-stack software engineer specializing in intelligent AI systems, real-time web applications, and cross-platform mobile apps.",
-    type: "website",
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_SEO.title,
+    template: `%s | ${SITE_SEO.shortTitle}`,
   },
+  description: SITE_SEO.description,
+  applicationName: `${PROFILE.name} Portfolio`,
+  keywords: [...SITE_SEO.keywords],
+  authors: [{ name: PROFILE.fullName, url: PROFILE.github }],
+  creator: PROFILE.fullName,
+  publisher: PROFILE.fullName,
+  category: "technology",
+  referrer: "origin-when-cross-origin",
+  alternates: {
+    canonical: "/",
+  },
+  robots: ALLOW_INDEXING
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      }
+    : {
+        index: false,
+        follow: false,
+      },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: `${PROFILE.name} — Portfolio`,
+    title: SITE_SEO.title,
+    description: SITE_SEO.description,
+    images: [
+      {
+        url: SITE_SEO.ogImagePath,
+        width: SITE_SEO.ogImageWidth,
+        height: SITE_SEO.ogImageHeight,
+        alt: SITE_SEO.ogImageAlt,
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_SEO.title,
+    description: SITE_SEO.description,
+    images: [
+      {
+        url: SITE_SEO.ogImagePath,
+        alt: SITE_SEO.ogImageAlt,
+      },
+    ],
+  },
+  verification: googleVerification
+    ? { google: googleVerification }
+    : undefined,
 };
 
 const themeInitScript = `

@@ -21,7 +21,7 @@ export default function Footer() {
           <a
             href={PROFILE.linkedin}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="footer-link"
           >
             LinkedIn
@@ -30,7 +30,7 @@ export default function Footer() {
           <a
             href={PROFILE.github}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="footer-link"
           >
             GitHub

@@ -10,6 +10,7 @@ Built with **Next.js 16 (App Router)**, **React 19**, **TypeScript**, and **Vani
 - **Experience, Thesis & Credentials Ledger** — Details DOST Regional Office I internship impact (E-sumite / FTRACS), VisitTrack LAN thesis (Docker, Playwright, k6), DMMMSU BS Computer Science (Magna Cum Laude), and PhilNITS IT Passport certification.
 - **Direct Social & Contact Channels** — LinkedIn (`linkedin.com/in/aedrian-sagap-936191247`), GitHub (`github.com/aedriansagap`), and one-click copyable email.
 - **Dual Theme Support** — Persistent Obsidian (dark) and Paper (light) modes with accessible keyboard navigation and responsive layout.
+- **Technical SEO & Social Sharing** — Canonical URLs, Schema.org JSON-LD (`WebSite`, `ProfilePage`, `Person`, `ItemList`), static `sitemap.xml`, `robots.txt`, `manifest.webmanifest`, custom `1200×630` Open Graph card, and branded `"AS."` favicon suite.
 
 ## Running Locally
 
@@ -37,7 +38,7 @@ This project is configured for Next.js static export (`output: "export"` in `nex
 npm install -g firebase-tools
 firebase login
 firebase use --add   # select your Firebase project
-npm run build
+NEXT_PUBLIC_SITE_URL=https://<your-project-id>.web.app npm run build
 firebase deploy --only hosting
 ```
 
@@ -46,9 +47,14 @@ firebase deploy --only hosting
 Two workflows are preconfigured in `.github/workflows/`:
 
 - **`firebase-hosting-merge.yml`** — Lints, builds `out/`, and deploys to the `live` Firebase Hosting channel on every push to `main` (and via manual `workflow_dispatch`).
-- **`firebase-hosting-pull-request.yml`** — Runs lint + build checks on every PR and publishes a temporary 7-day Firebase preview URL once credentials are configured.
+- **`firebase-hosting-pull-request.yml`** — Runs lint + build checks on every PR and publishes a temporary 7-day Firebase preview URL (`noindex`) once credentials are configured.
 
 To activate automatic deploys, add two entries in **GitHub Repository → Settings → Secrets and variables → Actions**:
 
 1. **`FIREBASE_SERVICE_ACCOUNT`** *(Repository Secret)* — JSON key for a Firebase service account with the **Firebase Hosting Admin** role (generate in Firebase Console → Project Settings → Service Accounts, or via Google Cloud IAM).
-2. **`FIREBASE_PROJECT_ID`** *(Repository Variable or Secret)* — Your Firebase project ID (e.g., `my-portfolio-12345`).
+2. **`FIREBASE_PROJECT_ID`** *(Repository Variable or Secret)* — Your Firebase project ID (e.g., `my-portfolio-12345`). During CI builds, canonical URLs, `sitemap.xml`, and `robots.txt` automatically derive `https://<FIREBASE_PROJECT_ID>.web.app`.
+
+Optional SEO variables *(Repository Variables)*:
+
+- **`SITE_URL`** — Custom domain override (e.g., `https://aedriansagap.dev`) if you connect a custom domain to Firebase Hosting.
+- **`GOOGLE_SITE_VERIFICATION`** — Verification token from Google Search Console (rendered as `<meta name="google-site-verification">`).
