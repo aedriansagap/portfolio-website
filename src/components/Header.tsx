@@ -50,7 +50,7 @@ export default function Header() {
             id="header-github-link"
             href={PROFILE.github}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="icon-btn"
             aria-label="GitHub profile"
             title="GitHub"
@@ -61,7 +61,7 @@ export default function Header() {
             id="header-linkedin-link"
             href={PROFILE.linkedin}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="icon-btn"
             aria-label="LinkedIn profile"
             title="LinkedIn"
@@ -103,7 +103,7 @@ export default function Header() {
               <a
                 href={PROFILE.linkedin}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="btn btn-secondary"
               >
                 <LinkedInIcon size={16} />
@@ -112,7 +112,7 @@ export default function Header() {
               <a
                 href={PROFILE.github}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 className="btn btn-secondary"
               >
                 <GitHubIcon size={16} />

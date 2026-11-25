@@ -42,7 +42,7 @@ export default function ContactSection() {
               id="contact-linkedin-cta"
               href={PROFILE.linkedin}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               className="btn btn-primary"
             >
               <LinkedInIcon size={17} />
@@ -66,7 +66,7 @@ export default function ContactSection() {
             id="channel-linkedin"
             href={PROFILE.linkedin}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="channel-card"
           >
             <div className="channel-top">
@@ -84,7 +84,7 @@ export default function ContactSection() {
             id="channel-github"
             href={PROFILE.github}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="channel-card"
           >
             <div className="channel-top">

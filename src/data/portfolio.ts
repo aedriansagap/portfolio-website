@@ -51,8 +51,8 @@ export const PROFILE = {
   role: "Software Engineer",
   headline: "Engineering intelligent systems, real-time apps & human-centered tools.",
   intro:
-    "BS Computer Science graduate (Magna Cum Laude, DMMMSU) and PhilNITS IT Passport certified engineer from La Union, Philippines. I build production full-stack software, applied AI & RAG systems, cross-platform mobile apps, and low-latency multiplayer experiences.",
-  location: "Caba, La Union, Philippines",
+    "BS Computer Science graduate (Magna Cum Laude, DMMMSU) and PhilNITS IT Passport certified engineer based in the Philippines. I build production full-stack software, applied AI & RAG systems, cross-platform mobile apps, and low-latency multiplayer experiences.",
+  location: "Philippines",
   email: "sagapaedrian@gmail.com",
   github: "https://github.com/aedriansagap",
   githubHandle: "aedriansagap",

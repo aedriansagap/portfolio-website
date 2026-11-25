@@ -8,11 +8,21 @@ import {
   MailIcon,
 } from "@/components/Icons";
 import { EXPERIENCE, PROFILE, SKILL_GROUPS } from "@/data/portfolio";
+import { buildPortfolioJsonLd } from "@/lib/structured-data";
 import "./page.css";
 
 export default function Home() {
+  const structuredData = buildPortfolioJsonLd();
+
   return (
     <div className="page-stack">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
+
       {/* Editorial Hero */}
       <section className="hero" aria-labelledby="hero-heading">
         <div className="hero-primary">
@@ -33,7 +43,7 @@ export default function Home() {
               id="hero-linkedin-cta"
               href={PROFILE.linkedin}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               className="btn btn-secondary"
             >
               <LinkedInIcon size={16} />
@@ -44,7 +54,7 @@ export default function Home() {
               id="hero-github-cta"
               href={PROFILE.github}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               className="btn btn-ghost"
             >
               <GitHubIcon size={16} />
@@ -79,7 +89,7 @@ export default function Home() {
             <a
               href={PROFILE.linkedin}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               className="dossier-link"
             >
               <LinkedInIcon size={15} />
@@ -89,7 +99,7 @@ export default function Home() {
             <a
               href={PROFILE.github}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               className="dossier-link"
             >
               <GitHubIcon size={15} />
