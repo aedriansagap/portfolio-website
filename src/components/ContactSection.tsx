@@ -95,7 +95,7 @@ export default function ContactSection() {
               <ArrowUpRightIcon size={15} className="channel-arrow" />
             </div>
             <p className="channel-value">github.com/{PROFILE.githubHandle}</p>
-            <p className="channel-hint">19 public repositories, codebases &amp; live deployments</p>
+            <p className="channel-hint">20 public repositories, codebases &amp; live deployments</p>
           </a>
 
           <a

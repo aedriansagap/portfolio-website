@@ -213,7 +213,7 @@ export default function ProjectShowcase() {
             rel="noopener noreferrer"
             className="archive-all-link"
           >
-            View all 19 repositories
+            View all 20 repositories
             <ArrowUpRightIcon size={15} />
           </a>
         </div>
