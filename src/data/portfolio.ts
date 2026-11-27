@@ -63,7 +63,7 @@ export const PROFILE = {
     { label: "Education", value: "BS Computer Science · Magna Cum Laude (2026)" },
     { label: "Certification", value: "PhilNITS IT Passport (IP) Certified" },
     { label: "Core Focus", value: "Full-Stack · Applied AI / RAG · Mobile" },
-    { label: "Public Work", value: "19 GitHub Repositories · 3 Live Web Apps" },
+    { label: "Public Work", value: "20 GitHub Repositories · 4 Live Web Apps" },
   ],
 } as const;
 
@@ -91,6 +91,30 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     ],
     architectureNote:
       "FastAPI backend with Alembic migrations (SQLite zero-config or PostgreSQL 16 via Docker Compose), WebSocket state fan-out, and container readiness/liveness probes (/readyz, /healthz).",
+  },
+  {
+    id: "perfgate",
+    slug: "perfgate",
+    title: "PerfGate — CI Latency & API Gate",
+    tagline: "Zero-Docker TypeScript CLI & GitHub Action for PR latency and contract regression gating",
+    description:
+      "An open-source developer tool and native Node 20 GitHub Action that benchmarks API endpoints on pull requests, validates JSON and header contracts, filters flaky CI jitter via a configurable millisecond noise floor, and upserts sticky Markdown latency diff tables.",
+    category: "Mobile & Tools",
+    year: "2026",
+    image: "/projects/perfgate.jpg",
+    imageAlt: "Minimalist obsidian histogram columns intersected by a copper latency threshold beam representing PerfGate",
+    repoUrl: "https://github.com/aedriansagap/perfgate",
+    liveUrl: "https://aedriansagap.github.io/perfgate",
+    featured: true,
+    language: "TypeScript",
+    techStack: ["TypeScript", "Node.js", "GitHub Actions", "Zod", "Vitest", "esbuild", "CLI"],
+    highlights: [
+      "Bounded-concurrency HTTP benchmark engine with warmup exclusion and exact linear-interpolated p50/p95/p99 stats.",
+      "Dual-condition regression gate combining percentage thresholds with a minDeltaMs noise floor to eliminate flaky CI failures.",
+      "Zero-Docker pre-bundled GitHub Action emitting sticky PR diff comments, Step Summaries, JUnit XML, and an interactive playground.",
+    ],
+    architectureNote:
+      "Dual-target tsup + esbuild pipeline publishing a typed ESM CLI/library alongside a single-file Node 20 GitHub Action bundle verified by self-dogfooding CI workflows and Vitest integration suites.",
   },
   {
     id: "typeclash",
